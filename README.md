@@ -13,10 +13,15 @@ Economic load dispatch with losses uses iterative method. Power loss function ma
 1. Download <code>ELD.py</code>
 2. Create a Jupyter Notebook in the same folder.
 3. <code>from ELD import X</code>, where X is the name of the methods mentioned above.
-4. Create a <code>numpy.array()</code> containing the cost functions and their generation limits in the form of: <code>[a, b, c, Pmin, Pmax]</code>. See [tutorial](https://github.com/kypexfly/economic-load-dispatch/new/master?readme=1).
+4. Create a <code>numpy.array()</code> containing the cost functions and their generation limits in the form of: <code>[a, b, c, Pmin, Pmax]</code>. See [tutorial](https://github.com/kypexfly/economic-load-dispatch/blob/master/ELD%20Python/tutorial.ipynb).
 5. Call the function.
 
+## How to use (MATLAB)
+* Not available yet!
+
 ## Notes
-* If you find any error/problem I would appreciate any feedback.
-* Code might not work as intented, it's not finished yet imo.
-* MATLAB code is being developed, but it's almost the same as Python code. Note that MATLAB runs faster than Python but for everyday case you wouldn't note it.
+* ELD with losses has a problem with Ploss function, so I hope to fix it soon.
+* * Code might not work as intented, it's not finished yet imo.
+* If you find any error/problem I would appreciate feedback.
+* MATLAB code is being developed, but it's almost the same as Python code. 
+* Note that MATLAB runs faster than Python but for everyday case you wouldn't note it.
