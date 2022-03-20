@@ -1,5 +1,6 @@
 % ECONOMIC LOAD DISPACH BY: ITERATIVE LAMBDA METHOD w/o LOSSES
 % CODE BY: Ricardo Chu Zheng, 2022
+% GITHUB: https://github.com/kypexfly
 % REFERENCE: Power Generation, Operation, and Control, Allen J. Wood, Bruce F. Wollenberg, Gerald B. Sheblé (2013)
 
 clc; clear;
