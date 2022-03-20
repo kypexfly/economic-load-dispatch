@@ -6,6 +6,7 @@
 USED LIBRARIES: numpy, sympy (diff, symbols, poly)
 
 CODE BY: Ricardo Chu Zheng, 2022
+GITHUB: https://github.com/kypexfly
 REFERENCE: Power Generation, Operation, and Control, Allen J. Wood, Bruce F. Wollenberg, Gerald B. Sheblé (2013) """
 
 import numpy as np
