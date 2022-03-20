@@ -5,7 +5,7 @@
 clc; clear;
 
 data = data();
-PD = 800;
+PD = input("Load / Power demand in MW: "); % load/demand
 
 NGEN = size(data, 1);
 PMIN = data(:, 4);
