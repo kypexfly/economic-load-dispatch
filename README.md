@@ -17,8 +17,12 @@ Economic load dispatch with losses uses iterative method. Power loss function ma
 5. Call the function.
 
 ## How to use (MATLAB)
-* Not available yet!
-
+1. Download ELD MATLAB folder.
+2. Edit data.m with your own cost functions and generation limits.
+3. Open any method you wish: binary_search, iterative_lambda for ELD without losses, or iterative_w_losses for ELD with losses.
+4. Choose PD value and/or Ploss function.
+5. Run code (F5)
+ 
 ## Notes
 * If you find any error/problem I would appreciate feedback.
 * Note that MATLAB runs faster than Python but for everyday case you wouldn't note it.
