@@ -1,7 +1,7 @@
 """ ECONOMIC LOAD DISPACH BY:
 * ITERATIVE LAMBDA METHOD w/o LOSSES
 * BINARY SEARCH METHOD w/o LOSSES
-* ITERATIVE WITH LOSSES
+* ITERATIVE WITH LOSSES (IMPORTANT: POWER LIMIT ISN'T CONSIDERED)
 
 USED LIBRARIES: numpy, sympy (diff, symbols, poly)
 
@@ -11,7 +11,7 @@ REFERENCE: Power Generation, Operation, and Control, Allen J. Wood, Bruce F. Wol
 import numpy as np
 from sympy import diff, symbols, poly
 
-def binary_search(data, PD):
+def binary_search(data:np.ndarray, PD:float):
     
     NGEN = data.shape[0]
     PMIN = data[:, 3]
@@ -46,7 +46,7 @@ def binary_search(data, PD):
     
     return P
 
-def iterative_lambda(data, PD):
+def iterative_lambda(data:np.ndarray, PD:float):
     NGEN = data.shape[0]
     PMIN = data[:, 3]
     PMAX = data[:, 4]
@@ -76,7 +76,8 @@ def iterative_lambda(data, PD):
 
     return P
 
-def iterative_w_losses(data, PD, Ploss):
+def iterative_w_losses(data:np.ndarray, PD:float, Ploss:str):
+    """IMPORTANT: POWER LIMIT ISN'T CONSIDERED"""
     NGEN = data.shape[0]
     PMIN = data[:, 3]
     PMAX = data[:, 4]
@@ -97,19 +98,20 @@ def iterative_w_losses(data, PD, Ploss):
     A[diag_index] = 2*a
     A[-1,:-1] = 1
     B = np.append(np.array(b*-1), PD + float(poly(Ploss).eval(list(P))))
-    while(err > 0.01):
+    while(err > 1e-6):
         Pold = P
-        Pdict = dict(zip(Pvars, P))
+        Pdict = dict(zip(Pvars, Pold))
         for i in range(NGEN):
-            positions = [*diff(Ploss, Pvars[i]).as_poly().free_symbols]
+            positions = diff(Ploss, Pvars[i]).as_poly().args[1:]
             P2 = [Pdict[i] for i in positions]
             A[:-1, -1][i] = poly(diff(Ploss, Pvars[i])).eval(P2) - 1
             
-        B[-1] = PD + float(poly(Ploss).eval(list(P)))
+        positions = poly(Ploss).args[1:]
+        P2 = [Pdict[i] for i in positions]
+        B[-1] = PD + poly(Ploss).eval(list(P))
         result = np.linalg.solve(A, B)
         P = result[:NGEN]
         # Lambda = result[-1]
-        err = 0
         err = np.sum((P-Pold)**2)
         iter = iter + 1
     

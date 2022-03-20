@@ -20,8 +20,5 @@ Economic load dispatch with losses uses iterative method. Power loss function ma
 * Not available yet!
 
 ## Notes
-* ELD with losses has a problem with Ploss function, so I hope to fix it soon.
-* * Code might not work as intented, it's not finished yet imo.
 * If you find any error/problem I would appreciate feedback.
-* MATLAB code is being developed, but it's almost the same as Python code. 
 * Note that MATLAB runs faster than Python but for everyday case you wouldn't note it.
